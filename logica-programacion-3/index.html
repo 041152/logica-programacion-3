@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Factorial</title>
+</head>
+<body>
+  <h1>Calculadora de Factorial</h1>
+  <div id="resultado"></div>
+
+  <script>
+    function solicitarNumero() {
+      let entrada;
+      let numeroValido = false;
+
+      while (!numeroValido) {
+        entrada = prompt("Introduce un número entero positivo:");
+        if (entrada === null) {
+          alert("Cancelaste la operación.");
+          return null;
+        }
+
+        entrada = Number(entrada);
+
+        if (!isNaN(entrada) && Number.isInteger(entrada) && entrada >= 0) {
+          numeroValido = true;
+        } else {
+          alert("Por favor, introduce un número válido (entero positivo).");
+        }
+      }
+
+      return entrada;
+    }
+
+    function calcularFactorial(n) {
+      if (n === 0 || n === 1) return 1;
+      let resultado = 1;
+      for (let i = 2; i <= n; i++) {
+        resultado *= i;
+      }
+      return resultado;
+    }
+
+    const numero = solicitarNumero();
+
+    if (numero !== null) {
+      const factorial = calcularFactorial(numero);
+      console.log(`El factorial de ${numero} es: ${factorial}`);
+      document.getElementById("resultado").textContent = `El factorial de ${numero} es: ${factorial}`;
+    }
+  </script>
+</body>
+</html>
